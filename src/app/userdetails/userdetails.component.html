@@ -1,0 +1,48 @@
+
+<div style="overflow:auto;">
+  <h3  class="text-center" style="text-align:center ">
+        {{  user?.name|uppercase}} - Personal Details
+  </h3>
+<!-- <table class="table" style="background-color: #fde3e3;  margin: 0px auto; "> -->
+<table class="table" style="background-color: #14eba3; border: 1px solid rgb(235, 100, 10);width:1900px;" >
+
+
+<!-- SingleUserComponent.html:13 ERROR TypeError: Cannot read property 
+'name' of undefined at Object.eval [as updateDirectives] (SingleUserComponent.html:30) 
+at Object.debugUpdateDirectives [as updateDirectives] (core.js:10750)
+<tr> 
+===> we have to use question mark  
+-->
+<tr>
+  <th>STREET</th>
+  <td>{{user?.address.street|uppercase}}</td>
+</tr>
+<tr>
+  <th>PHONE</th>
+  <td>{{user?.phone|uppercase}}</td>
+</tr>
+<tr>
+  <th>CITY</th>
+  <td>{{user?.address.city|uppercase}}</td>
+</tr>
+<tr>
+  <th>ZIPCODE</th>
+  <td>{{user?.address.zipcode}}</td>
+</tr>
+<tr>
+  <th>LATTUTUDE</th>
+  <td>{{user?.address.geo.lat}}</td>
+</tr>
+</table>
+</div>
+
+<br>
+
+<p>
+    <a  [routerLink]='["/users"]'>
+      <h5>
+          <p style="text-align:center">Back-To-User-MainPage</p>
+        </h5>
+    </a>
+ 
+</p>

@@ -1,0 +1,41 @@
+<div style="align-content: center;background-color: rgb(110, 133, 133)">
+
+<div *ngIf='users!=null; else noUsers'> 
+
+  <h5 class="text-center" style="background-color: #f0aaa8">
+      ANGULAR - USER DATAS!. {{statusMessage}}
+   </h5>
+     <table class="table" style="background-color: #3fe1f3; border: 1px solid rgb(235, 100, 10);width:1900px;" >
+       <tr class="table-success">
+         <!-- <th>INDEX</th> -->
+         <th>ID</th>
+         <th>NAME</th>
+         <!-- <th>DATE OF BIRTH </th> -->
+         <th>CITY</th>
+         <th>EMAIL</th>
+       </tr>
+       <!-- 'Cannot find a differ supporting object '[object Object]' of type 'object'. NgFor only supports binding to Iterables such as Arrays' -->
+       <!-- <tr *ngFor='let user of users | async, let i=index'> -->
+           <!-- <tr *ngFor='let user of users | async'> -->
+               <tr *ngFor='let user of users'>
+         <!-- <td>{{i+1}}</td> -->
+         <td><a [routerLink]='["/users",user.id]'>{{user.id}}</a></td>
+         <td>{{user.name |uppercase}}</td>
+         <!-- <td>{{user.dob}}</td> -->
+         <td>{{user.address.city|uppercase}}</td>
+         <td>{{user.email}}</td>
+         <!-- <td>{{user.EmployeeID}}</td> -->
+   
+       </tr>
+     </table>
+    </div>
+    
+    <!-- <div *ngIf='users==null'> 
+        {{statusMessage}}+000
+    </div> -->
+  
+  <ng-template #noUsers >
+      <p  class="alert alert-danger text-center">{{statusMessage}}</p>
+  </ng-template> 
+  
+</div>

@@ -1,0 +1,115 @@
+<!-- <p>
+  crud works!
+</p> -->
+
+<div class="container">
+  <mat-card>  
+    <mat-toolbar color="accent">  
+      <div align="center" style="color:white;text-align: right;">  
+        CRUD operation in Angular 7 using Web api and Sql Database  
+      </div>    
+    </mat-toolbar>  
+  <br><br>  
+    <mat-card-content>  
+      <!-- <form [formGroup]="crudnewform" (ngSubmit)="onFormSubmit(crudnewform.value)">   -->
+          <form [formGroup]="crudnewform" (ngSubmit)="onFormSubmit()">  
+              <table>  
+                <tr>  
+                  <td class="tbl1">  
+                    <mat-form-field class="demo-full-width">  
+                      <input formControlName="EmpName" matTooltip="Enter Employee Name" matInput placeholder="Employee Name">  
+                    </mat-form-field>  
+                    <mat-error>  
+                      <span *ngIf="!crudnewform.get('EmpName').value && crudnewform.get('EmpName').touched"></span>  
+                    </mat-error>  
+                  </td>  
+                  <td class="tbl1">  
+                    <mat-form-field class="demo-full-width">  
+                      <input matInput [matDatepicker]="picker"matTooltip="Enter Date Of Birth" formControlName="DOB"placeholder="Choose Date Of Birth">  
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>  
+                      <mat-datepicker #picker></mat-datepicker>  
+                    </mat-form-field>  
+                    <mat-error>  
+                      <span *ngIf="!crudnewform.get('DOB').value && crudnewform.get('DOB').touched"></span>  
+                    </mat-error>  
+                  </td>  
+                  <td class="tbl1">  
+                    <mat-form-field class="demo-full-width">  
+                      <input formControlName="EmailID" matTooltip="Enter EmailId" matInput placeholder="EmailID">  
+                    </mat-form-field>  
+                    <mat-error>  
+                      <span *ngIf="!crudnewform.get('EmailID').value && crudnewform.get('EmailID').touched"></span>  
+                    </mat-error>  
+                  </td>  
+                </tr>  
+                <tr>  
+                  <td class="tbl1">  
+                    <span>Gender</span>  
+                    <br><br>  
+                    <mat-radio-group matTooltip="Enter Gender"formControlName="Gender">  
+                        <mat-radio-button value="M">Male</mat-radio-button>    
+                        <mat-radio-button value="F">Female</mat-radio-button>  
+                      </mat-radio-group>  
+                    <mat-error>  
+                      <span *ngIf="!crudnewform.get('Gender').value && crudnewform.get('Gender').touched"></span>  
+                    </mat-error>  
+                  </td>  
+                  <td class="tbl1">  
+                   
+                    <!-- <mat-error>  
+                      <span *ngIf="!crudform.get('Address').value && crudform.get('Address').touched"></span>  
+                    </mat-error>   -->
+                  </td>  
+                  
+                </tr>  
+                <tr>  
+                  <td></td>  
+                  <td  class="content-center">  
+                    <button type="submit" mat-raised-button color="accent"matTooltip="Click Submit Button"[disabled]="!crudnewform.invalid">Submit</button>      
+                    <button type="reset" mat-raised-button color="accent"matTooltip="Click Reset Button" (click)="resetForm()">Reset</button>  
+                  </td>  
+                  <td>  
+                    <p *ngIf="datasaved" style="color:rgb(0, 128, 0);font-size:20px;font-weight:bold" Class="success" align="left">  
+                      {{massage}}  
+                    </p>  
+                  </td>  
+                </tr>  
+              </table>  
+  <br><br>  
+        <table class="table" >  
+            <tr ngclass="btn-primary">  
+              <th class="tbl2">Employee Name</th>  
+              <th class="tbl2">Date Of Birth</th>  
+              <th class="tbl2">Email Id</th>  
+              <th class="tbl2">Gender</th>  
+              <th class="tbl2">Edit</th>  
+              <th class="tbl2">Delete</th>  
+            </tr>  
+            <tr *ngFor="let crudnew of allEmployees | async">  
+              <td class="tbl2">{{crudnew.EmpName}}</td>  
+              <td class="tbl2">{{crudnew.DOB | date }}</td>  
+              <td class="tbl2">{{crudnew.EmailID}}</td>  
+              <!-- <td class="tbl2">{{crudnew.Gender =='M'? 'M' : 'F'}}</td>   -->
+              <td class="tbl2">{{crudnew.Gender}}</td>  
+           
+              <td class="tbl2">  
+                <button type="button" class="btn btn-info"matTooltip="Click Edit Button"(click)="loadEmployeeToEdit(crudnew.EmpID)">Edit</button>  
+              </td>  
+              <td class="tbl2">  
+                <button type="button" class="btn btn-danger"matTooltip="Click Delete Button"(click)="deleteEmployee(crudnew.EmpID)">Delete</button>  
+              </td>  
+            </tr>  
+    
+          </table>  
+      </form>  
+    </mat-card-content>  
+  </mat-card>  
+</div>
+
+<p>
+  <a [routerLink]='["/users"]'>
+    <h5>
+      <p style="text-align:center">Back-To-User-MainPage</p>
+    </h5>
+  </a>
+  </p>

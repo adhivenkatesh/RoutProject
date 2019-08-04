@@ -1,0 +1,24 @@
+This is how to run project for production 
+
+Here aot means ahead of time which will compile with errors
+command => ng build --prod  --aot --base-href /users/
+
+command => ng build --aot --prod --output-hashing none  --base-href /users/ (this also we can use)
+
+install => bootstarp dependencies ( all the below files will be installed in ngmodules)
+   -> npm install jquery popper.js
+   -> npm install bootstrap  
+
+   then now move to angular.cli.json
+
+-- in mobile check cli ->ng serve --host=0.0.0.0 --disable-host-check
+
+
+-- for trouble shoots
+--> npm audit fix
+--> ng build --aot
+
+
+--> angular MATERIAL
+--> ng add @angular/material
+--> npm install --save @angular/material @angular/cdk @angular/animations
